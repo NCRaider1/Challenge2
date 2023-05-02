@@ -11,11 +11,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import github.tools.client.GitHubApiClient;
+import github.tools.responseObjects.*;
+
 public class Challenge2
 {
     static Boolean privacy;
     public static void main (String[] args)
     {
+
+        // Here are all 5 frames used for this GUI application
         JFrame startScreen = new JFrame("Start");
         startScreen.setSize(1000,800);
         startScreen.setResizable(false);
@@ -41,8 +47,8 @@ public class Challenge2
         frame4.setResizable(false);
         frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//Starting Screen
-JPanel startPanel = new JPanel();
+        //Starting Screen
+        JPanel startPanel = new JPanel();
         startPanel.setLayout(null);
         startPanel.setBackground(Color.WHITE);
 
@@ -53,18 +59,18 @@ JPanel startPanel = new JPanel();
         titleMessage.setForeground(Color.BLACK);
         startPanel.add(titleMessage);
 
-        JLabel username = new JLabel("Enter Github Username:");
-        username.setSize(300,50);
-        username.setLocation(550,125);
-        username.setForeground(Color.RED);
-        startPanel.add(username);
+        JLabel user = new JLabel("Enter Github Username:");
+        user.setSize(300,50);
+        user.setLocation(550,125);
+        user.setForeground(Color.RED);
+        startPanel.add(user);
 
         JTextField uName = new JTextField();
         uName.setSize(200,50);
         uName.setLocation(550,175);
         startPanel.add(uName);
 
-        JLabel pathname = new JLabel("Enter Directory Path Name:");
+        JLabel pathname = new JLabel("Enter your repo directory path name:");
         pathname.setSize(300,50);
         pathname.setLocation(550,275);
         pathname.setForeground(Color.RED);
@@ -84,7 +90,7 @@ JPanel startPanel = new JPanel();
         log.setBounds(0, 0, 500, 500);
         startPanel.add(log);
 
-        ImageIcon background = new ImageIcon("cloudServer.jpg");
+        ImageIcon background = new ImageIcon("AppBackground.jpg");
         Image img2 = background.getImage();
         Image temp2 = img2.getScaledInstance(1000,800,Image.SCALE_SMOOTH);
         background = new ImageIcon(temp2);
@@ -93,7 +99,7 @@ JPanel startPanel = new JPanel();
         back.setBounds(0, 0, 1000, 800);
         startPanel.add(back);
 
-
+        // This button allows us to move to the second panel
         JButton next = new JButton("Continue");
         next.setSize(200,100);
         next.setLocation(400, 450);
@@ -113,7 +119,7 @@ JPanel startPanel = new JPanel();
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        JLabel tokenText = new JLabel("Enter TOKEN:");
+        JLabel tokenText = new JLabel("Enter your access TOKEN:");
         tokenText.setSize(300,50);
         tokenText.setLocation(350,175);
         tokenText.setForeground(Color.RED);
@@ -147,7 +153,7 @@ JPanel startPanel = new JPanel();
         // path.setLocation(350,350);
         // panel.add(path);
 
-        ImageIcon background1 = new ImageIcon("cloudServer.jpg");
+        ImageIcon background1 = new ImageIcon("AppBackground.jpg");
         Image img1 = background1.getImage();
         Image temp1 = img1.getScaledInstance(1000,800,Image.SCALE_SMOOTH);
         background1 = new ImageIcon(temp1);
@@ -185,7 +191,7 @@ JPanel startPanel = new JPanel();
         desc.setLocation(350,300);
         panelB.add(desc);
 
-        ImageIcon background2 = new ImageIcon("cloudServer.jpg");
+        ImageIcon background2 = new ImageIcon("AppBackground.jpg");
         Image img3 = background2.getImage();
         Image temp3 = img3.getScaledInstance(1000,800,Image.SCALE_SMOOTH);
         background2 = new ImageIcon(temp3);
@@ -194,6 +200,7 @@ JPanel startPanel = new JPanel();
         back3.setBounds(0, 0, 1000, 800);
         panelB.add(back3);
 
+        // These two following buttons allow the user to select whether the repository will be public or private
         JButton privateB = new JButton("Private");
         privateB.setSize(200,100);
         privateB.setLocation(475, 400);
@@ -219,6 +226,18 @@ JPanel startPanel = new JPanel();
         JButton createButton = new JButton("Create Repository");
         createButton.setSize(250,50);
         createButton.setLocation(350,550);
+
+        createButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                // GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
+                // GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
+            }
+        });
+
+        //GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
+        //GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
+
+
         //Button Listener that creates the repo based on the information
         panelB.add(createButton);
 
