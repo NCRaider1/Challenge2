@@ -235,6 +235,9 @@ public class Challenge2
 
                 CreateRepoResponse createRepo = gitHubApiClient.createRepo(requestParams);
 
+                String gitInit = gitSubprocessClient.gitInit();
+                String gitRemoteAdd = gitSubprocessClient.gitRemoteAdd("origin", path.getText());
+
             }
         });
 
