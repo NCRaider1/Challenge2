@@ -13,7 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import github.tools.client.GitHubApiClient;
+import github.tools.client.RequestParams;
 import github.tools.responseObjects.*;
+
+import git.tools.client.GitSubprocessClient;
 
 public class Challenge2
 {
@@ -81,6 +84,9 @@ public class Challenge2
         path.setLocation(550,325);
         startPanel.add(path);
 
+        GitSubprocessClient gitSubprocessClient = new GitSubprocessClient(path.getText());
+
+
         ImageIcon logo = new ImageIcon("githubLogo.jpg");
         Image img = logo.getImage();
         Image temp = img.getScaledInstance(250,250,Image.SCALE_SMOOTH);
@@ -130,6 +136,10 @@ public class Challenge2
         token.setLocation(350,225);
         panel.add(token);
 
+        // Now that we have both the username and token we can create an instance of out github client
+        GitHubApiClient gitHubApiClient = new GitHubApiClient(uName.getText(), token.getText());
+
+
         JButton continueB = new JButton("Continue");
         continueB.setSize(200,100);
         continueB.setLocation(400, 450);
@@ -141,17 +151,6 @@ public class Challenge2
             }
         });
         panel.add(continueB);
-
-        // JLabel pathname = new JLabel("Enter Directory Path Name:");
-        // pathname.setSize(300,50);
-        // pathname.setLocation(350,300);
-        // pathname.setForeground(Color.RED);
-        // panel.add(pathname);
-
-        // JTextField path = new JTextField();
-        // path.setSize(200,50);
-        // path.setLocation(350,350);
-        // panel.add(path);
 
         ImageIcon background1 = new ImageIcon("AppBackground.jpg");
         Image img1 = background1.getImage();
@@ -229,8 +228,13 @@ public class Challenge2
 
         createButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                // GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
-                // GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
+                RequestParams requestParams = new RequestParams();
+                requestParams.addParam("name", rName.getText());       // name of repo
+                requestParams.addParam("description", desc.getText()); // repo description
+                requestParams.addParam("private", privacy);            // if repo is private or not
+
+                CreateRepoResponse createRepo = gitHubApiClient.createRepo(requestParams);
+
             }
         });
 
@@ -265,5 +269,33 @@ public class Challenge2
         errorMessage.setLocation(400,300);
         errorMessage.setSize(400,350);
         compPanel.add(errorMessage);
+
+
+        // import github.tools.client.GitHubApiClient;
+        // import github.tools.client.RequestParams;
+        // import github.tools.responseObjects.*;
+
+        // import git.tools.client.GitSubprocessClient;
+
+        // // Now that we have both the username and token we can create an instance of out github client
+        // GitHubApiClient gitHubApiClient = new GitHubApiClient(uName.getText(), token.getText());
+
+
+    
+        // JButton createButton = new JButton("Create Repository");
+        // createButton.setSize(250,50);
+        // createButton.setLocation(350,550);
+
+        // createButton.addActionListener(new ActionListener(){
+        //     public void actionPerformed(ActionEvent e){
+        //         RequestParams requestParams = new RequestParams();
+        //         requestParams.addParam("name", rName.getText());       // name of repo
+        //         requestParams.addParam("description", desc.getText()); // repo description
+        //         requestParams.addParam("private", privacy);            // if repo is private or not
+
+        //         CreateRepoResponse createRepo = gitHubApiClient.createRepo(requestParams);
+
+        //     }
+        // });
     }
 }
