@@ -47,7 +47,7 @@ public class Challenge2
         titleMessage.setLocation(425, 0);
         titleMessage.setForeground(Color.BLACK);
         startPanel.add(titleMessage);
-
+         
         ImageIcon logo = new ImageIcon("githubLogo.jpg");
         Image img = logo.getImage();
         Image temp = img.getScaledInstance(250,250,Image.SCALE_SMOOTH);
@@ -56,6 +56,15 @@ public class Challenge2
         log.setLayout(null);
         log.setBounds(0, 0, 500, 500);
         startPanel.add(log);
+        
+        ImageIcon qulogo = new ImageIcon("QUbobcat.png");
+        Image bobCat = qulogo.getImage();
+        Image bobCatTemp = bobCat.getScaledInstance(250,250,Image.SCALE_SMOOTH);
+        qulogo = new ImageIcon(bobCatTemp);
+        JLabel log2 = new JLabel(qulogo);
+        log2.setLayout(null);
+        log2.setBounds(0, 0, 1500, 500);
+        startPanel.add(log2);
 
         ImageIcon background = new ImageIcon("cloudServer.jpg");
         Image img2 = background.getImage();
@@ -141,9 +150,20 @@ public class Challenge2
         desc.setLocation(350,275);
         panel.add(desc);
 
+        JButton addGitIgnore = new JButton("Add a .gitignore");
+        addGitIgnore.setSize(200,100);
+        addGitIgnore.setLocation(350, 330);
+        addGitIgnore.setBackground(Color.LIGHT_GRAY);
+        addGitIgnore.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                privacy = true;
+            }
+        });
+        panel.add(addGitIgnore);
+
         JButton privateB = new JButton("Private");
         privateB.setSize(200,100);
-        privateB.setLocation(475, 330);
+        privateB.setLocation(475, 440);
         privateB.setBackground(Color.LIGHT_GRAY);
         privateB.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -154,7 +174,7 @@ public class Challenge2
 
         JButton publicB = new JButton("Public");
         publicB.setSize(200,100);
-        publicB.setLocation(250, 330);
+        publicB.setLocation(250,440);
         publicB.setBackground(Color.LIGHT_GRAY);
         publicB.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -165,7 +185,7 @@ public class Challenge2
 
         JButton continueB = new JButton("Create Repository");
         continueB.setSize(200,100);
-        continueB.setLocation(350, 450);
+        continueB.setLocation(350, 550);
         continueB.setBackground(Color.LIGHT_GRAY);
         continueB.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
