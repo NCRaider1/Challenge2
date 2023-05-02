@@ -295,6 +295,8 @@ public class Challenge2
         //         requestParams.addParam("name", rName.getText());       // name of repo
         //         requestParams.addParam("description", desc.getText()); // repo description
         //         requestParams.addParam("private", privacy);            // if repo is private or not
+        //String gitInit = gitSubprocessClient.gitInit();
+        //String gitRemoteAdd = gitSubprocessClient.gitRemoteAdd("origin", path.getText());
 
         //         CreateRepoResponse createRepo = gitHubApiClient.createRepo(requestParams);
 
