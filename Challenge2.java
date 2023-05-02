@@ -26,23 +26,18 @@ public class Challenge2
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JFrame frame2 = new JFrame("Repo Information");
-        frame2.setSize(1000,800);
-        frame2.setResizable(false);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            // JFrame frame2 = new JFrame("Repo Information");
+            // frame2.setSize(1000,800);
+            // frame2.setResizable(false);
+            // frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JFrame frame3 = new JFrame("Repo Created");
         frame3.setSize(1000,800);
         frame3.setResizable(false);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JFrame frame4 = new JFrame("Frame4");
-        frame4.setSize(1000,800);
-        frame4.setResizable(false);
-        frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-//Starting Screen
-JPanel startPanel = new JPanel();
+        //Starting Screen
+        JPanel startPanel = new JPanel();
         startPanel.setLayout(null);
         startPanel.setBackground(Color.WHITE);
 
@@ -52,28 +47,6 @@ JPanel startPanel = new JPanel();
         titleMessage.setLocation(425, 0);
         titleMessage.setForeground(Color.BLACK);
         startPanel.add(titleMessage);
-
-        JLabel username = new JLabel("Enter Github Username:");
-        username.setSize(300,50);
-        username.setLocation(550,125);
-        username.setForeground(Color.RED);
-        startPanel.add(username);
-
-        JTextField uName = new JTextField();
-        uName.setSize(200,50);
-        uName.setLocation(550,175);
-        startPanel.add(uName);
-
-        JLabel pathname = new JLabel("Enter Directory Path Name:");
-        pathname.setSize(300,50);
-        pathname.setLocation(550,275);
-        pathname.setForeground(Color.RED);
-        startPanel.add(pathname);
-
-        JTextField path = new JTextField();
-        path.setSize(200,50);
-        path.setLocation(550,325);
-        startPanel.add(path);
 
         ImageIcon logo = new ImageIcon("githubLogo.jpg");
         Image img = logo.getImage();
@@ -113,39 +86,95 @@ JPanel startPanel = new JPanel();
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
+        JLabel username = new JLabel("Enter Github Username:");
+        username.setSize(300,50);
+        username.setLocation(200,75);
+        username.setForeground(Color.RED);
+        panel.add(username);
+
+        JTextField uName = new JTextField();
+        uName.setSize(200,50);
+        uName.setLocation(350,75);
+        panel.add(uName);
+
+        JLabel pathname = new JLabel("Enter Directory Path Name:");
+        pathname.setSize(300,50);
+        pathname.setLocation(185,125);
+        pathname.setForeground(Color.RED);
+        panel.add(pathname);
+
+        JTextField path = new JTextField();
+        path.setSize(200,50);
+        path.setLocation(350,125);
+        panel.add(path);
+
         JLabel tokenText = new JLabel("Enter TOKEN:");
         tokenText.setSize(300,50);
-        tokenText.setLocation(350,175);
+        tokenText.setLocation(260,175);
         tokenText.setForeground(Color.RED);
         panel.add(tokenText);
 
         JTextField token = new JTextField();
         token.setSize(200,50);
-        token.setLocation(350,225);
+        token.setLocation(350,175);
         panel.add(token);
 
-        JButton continueB = new JButton("Continue");
+        JLabel reponame = new JLabel("Enter Repository Name:");
+        reponame.setSize(300,50);
+        reponame.setLocation(200,225);
+        reponame.setForeground(Color.RED);
+        panel.add(reponame);
+
+        JTextField rName = new JTextField();
+        rName.setSize(200,50);
+        rName.setLocation(350,225);
+        panel.add(rName);
+
+        JLabel repodesc = new JLabel("Description of Repository:");
+        repodesc.setSize(300,50);
+        repodesc.setLocation(185,275);
+        repodesc.setForeground(Color.RED);
+        panel.add(repodesc);
+
+        JTextField desc = new JTextField();
+        desc.setSize(200,50);
+        desc.setLocation(350,275);
+        panel.add(desc);
+
+        JButton privateB = new JButton("Private");
+        privateB.setSize(200,100);
+        privateB.setLocation(475, 330);
+        privateB.setBackground(Color.LIGHT_GRAY);
+        privateB.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                privacy = true;
+            }
+        });
+        panel.add(privateB);
+
+        JButton publicB = new JButton("Public");
+        publicB.setSize(200,100);
+        publicB.setLocation(250, 330);
+        publicB.setBackground(Color.LIGHT_GRAY);
+        publicB.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                privacy = false;
+            }
+        });
+        panel.add(publicB);
+
+        JButton continueB = new JButton("Create Repository");
         continueB.setSize(200,100);
-        continueB.setLocation(400, 450);
+        continueB.setLocation(350, 450);
         continueB.setBackground(Color.LIGHT_GRAY);
         continueB.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                frame2.setVisible(true);
+                frame3.setVisible(true);
             }
         });
         panel.add(continueB);
 
-        // JLabel pathname = new JLabel("Enter Directory Path Name:");
-        // pathname.setSize(300,50);
-        // pathname.setLocation(350,300);
-        // pathname.setForeground(Color.RED);
-        // panel.add(pathname);
-
-        // JTextField path = new JTextField();
-        // path.setSize(200,50);
-        // path.setLocation(350,350);
-        // panel.add(path);
 
         ImageIcon background1 = new ImageIcon("cloudServer.jpg");
         Image img1 = background1.getImage();
@@ -158,72 +187,6 @@ JPanel startPanel = new JPanel();
 
         frame.setContentPane(panel);
         frame.setVisible(false);
-
-        //Frame 2: Repo Information
-        JPanel panelB = new JPanel();
-        panelB.setLayout(null);
-
-        JLabel reponame = new JLabel("Enter Repository Name:");
-        reponame.setSize(300,50);
-        reponame.setLocation(200,225);
-        reponame.setForeground(Color.RED);
-        panelB.add(reponame);
-
-        JTextField rName = new JTextField();
-        rName.setSize(200,50);
-        rName.setLocation(350,225);
-        panelB.add(rName);
-
-        JLabel repodesc = new JLabel("Description of Repository:");
-        repodesc.setSize(300,50);
-        repodesc.setLocation(185,300);
-        repodesc.setForeground(Color.RED);
-        panelB.add(repodesc);
-
-        JTextField desc = new JTextField();
-        desc.setSize(200,50);
-        desc.setLocation(350,300);
-        panelB.add(desc);
-
-        ImageIcon background2 = new ImageIcon("cloudServer.jpg");
-        Image img3 = background2.getImage();
-        Image temp3 = img3.getScaledInstance(1000,800,Image.SCALE_SMOOTH);
-        background2 = new ImageIcon(temp3);
-        JLabel back3 = new JLabel(background2);
-        back3.setLayout(null);
-        back3.setBounds(0, 0, 1000, 800);
-        panelB.add(back3);
-
-        JButton privateB = new JButton("Private");
-        privateB.setSize(200,100);
-        privateB.setLocation(475, 400);
-        privateB.setBackground(Color.LIGHT_GRAY);
-        privateB.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                privacy = true;
-            }
-        });
-        panelB.add(privateB);
-
-        JButton publicB = new JButton("Public");
-        publicB.setSize(200,100);
-        publicB.setLocation(250, 400);
-        publicB.setBackground(Color.LIGHT_GRAY);
-        publicB.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                privacy = false;
-            }
-        });
-        panelB.add(publicB);
-
-        JButton createButton = new JButton("Create Repository");
-        createButton.setSize(250,50);
-        createButton.setLocation(350,550);
-        //Button Listener that creates the repo based on the information
-        panelB.add(createButton);
-
-        frame2.setContentPane(panelB);
-        frame2.setVisible(false);
 
         //Frame 3: Completed Repo
         JPanel compPanel = new JPanel();
